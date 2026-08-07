@@ -1,30 +1,17 @@
 # latincy-marimo
 
-Marimo notebooks for experimenting with Latin token and lexeme analysis.
+This repository hosts [marimo notebooks](https://marimo.io) illustrating how to use `latincy` text models for Latin token and lexeme analysis.
 
-## Quick Start
+## Installing and running
 
-```bash
-uv venv
-source .venv/bin/activate
-uv sync --no-install-project
-```
+### Prerequisites
 
-Then launch a notebook:
-
-```bash
-marimo edit marimo/latin-manual.py
-```
-
-## Prerequisites
-
-- uv
 - Python 3.10-3.13
+- `uv`
 - macOS/Linux shell (commands below use `bash`/`zsh` style)
 
-## Instantiate The Project
 
-From the project root:
+### One-time set-up
 
 ```bash
 uv venv
@@ -32,32 +19,24 @@ source .venv/bin/activate
 uv sync --no-install-project
 ```
 
-`uv sync --no-install-project` installs runtime dependencies from [pyproject.toml](pyproject.toml), including `marimo`, `spacy`, and `la_core_web_sm`.
+### Usage
 
-Notes:
-
-- The model is installed from Hugging Face using a direct wheel URL.
-- If you need to install it manually, run:
-
-```bash
-uv pip install --python .venv/bin/python "la-core-web-sm @ https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl"
-```
-- `uv sync` without `--no-install-project` may fail in this repository because setuptools auto-discovers multiple top-level directories (`data` and `marimo`).
-
-## Run Marimo Notebooks
-
-Start from the project root with your virtual environment active. Open a notebook in edit mode, e.g.:
+Launch a notebook with normal `marimo` commands like:
 
 ```bash
 marimo edit marimo/latin-manual.py
 ```
 
-
-
-Run a notebook as an app:
+or 
 
 ```bash
 marimo run marimo/latin-manual.py
 ```
 
-The browser URL is printed in the terminal when Marimo starts.
+### Note on installation
+
+`uv sync --no-install-project` installs runtime dependencies defined in `pyproject.toml`, including `marimo`, `spacy`, and `la_core_web_sm`. The `latincy` model is installed from Hugging Face using a direct wheel URL. If you need to install it manually, run:
+
+```bash
+uv pip install --python .venv/bin/python "la-core-web-sm @ https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl"
+```
