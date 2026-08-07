@@ -17,7 +17,6 @@ classifiers = [
 dependencies = [
     "marimo>=0.20.4",
     "spacy>=3.7",
-    "la_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/la_core_web_sm-3.7.0/la_core_web_sm-3.7.0-py3-none-any.whl ; python_version < '3.13'",
 ]
 
 [project.optional-dependencies]

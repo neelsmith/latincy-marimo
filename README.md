@@ -32,11 +32,13 @@ source .venv/bin/activate
 uv sync --no-install-project
 ```
 
-`uv sync --no-install-project` installs runtime dependencies from [pyproject.toml](pyproject.toml), including `marimo`, `spacy`, and `la_core_web_sm` when compatible with your Python version.
+`uv sync --no-install-project` installs runtime dependencies from [pyproject.toml](pyproject.toml), including `marimo` and `spacy`.
+
+The notebooks require `la_core_web_sm` to be installed in your environment. They do not include fallback behavior.
 
 Notes:
 
-- On Python 3.13, `la_core_web_sm` may be unavailable. The notebooks should still run with a fallback pipeline.
+- The historical `la_core_web_sm` download URL used by spaCy now returns 404. This repository no longer installs that model during setup.
 - `uv sync` without `--no-install-project` may fail in this repository because setuptools auto-discovers multiple top-level directories (`data` and `marimo`).
 
 ## Run Marimo Notebooks
@@ -46,7 +48,9 @@ Start from the project root with your virtual environment active. Open a noteboo
 ```bash
 marimo edit marimo/latin-manual.py
 ```
-un marimo edit latin-from_file.py
+
+```bash
+marimo edit marimo/latin-from_file.py
 ```
 
 Run a notebook as an app:
