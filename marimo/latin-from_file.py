@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.20.4"
+__generated_with = "0.23.16"
 app = marimo.App(
     width="columns",
     layout_file="layouts/latin-from_file.grid.json",
@@ -21,6 +21,53 @@ def _(mo):
     # Latin token and lexeme counts using `latincy`
     """)
     return
+
+
+@app.cell(hide_code=True)
+def _(file_area):
+    file_area
+    return
+
+
+@app.cell(hide_code=True)
+def _(side_by_side):
+    side_by_side
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    ## UI
+    """)
+    return
+
+
+@app.cell
+def _(file_area, mo):
+    uploadlabel = "*Please select a file to upload*:"
+    if file_area.name():
+        uploadlabel = f"Uploaded `{file_area.name()}`"
+    mo.md(uploadlabel)
+    return
+
+
+@app.cell
+def _():
+    divider = "|"
+    return (divider,)
+
+
+@app.cell
+def _(mo):
+    file_area = mo.ui.file(kind="area")
+    return (file_area,)
+
+
+@app.cell
+def _(file_area):
+    raw = file_area.contents()
+    return (raw,)
 
 
 @app.cell
@@ -55,46 +102,15 @@ def _(lemmalist, mo, tokenlemmalist):
     # 3. Combine side-by-side using hstack
     side_by_side = mo.hstack([left_col, right_col], widths="equal", gap=1)
 
-    side_by_side
-    return
 
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md("""
-    ## UI
-    """)
-    return
+    return (side_by_side,)
 
 
 @app.cell
-def _():
-    divider = "|"
-    return (divider,)
-
-
-@app.cell
-def _(mo):
-    file_area = mo.ui.file(kind="area")
-    file_area
-    return (file_area,)
-
-
-@app.cell
-def _(file_area):
-    file_area.name()
-    return
-
-
-@app.cell
-def _(file_area):
-    raw = file_area.contents()
-    return (raw,)
-
-
-@app.cell
-def _(raw):
-    stringlines = raw.decode("utf-8").splitlines()
+def _(file_area, raw):
+    stringlines =[]
+    if file_area.contents():
+        stringlines = raw.decode("utf-8").splitlines()
     return (stringlines,)
 
 

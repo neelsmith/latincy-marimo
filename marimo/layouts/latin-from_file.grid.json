@@ -14,30 +14,41 @@
           1,
           2,
           20,
+          7
+        ]
+      },
+      {
+        "position": [
+          9,
+          10,
+          9,
+          7
+        ]
+      },
+      {
+        "position": [
+          2,
+          19,
+          17,
+          12
+        ]
+      },
+      {
+        "position": null
+      },
+      {
+        "position": [
+          2,
+          11,
+          6,
           3
         ]
       },
       {
-        "position": [
-          3,
-          19,
-          12,
-          35
-        ]
-      },
-      {
         "position": null
       },
       {
         "position": null
-      },
-      {
-        "position": [
-          6,
-          7,
-          7,
-          11
-        ]
       },
       {
         "position": null
