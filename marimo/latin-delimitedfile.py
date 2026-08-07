@@ -24,7 +24,8 @@ def _(mo):
 
 
 @app.cell
-def _():
+def _(delimiter_dict):
+    delimiter_dict
     return
 
 
@@ -64,6 +65,12 @@ def _(mo):
 
 @app.cell
 def _(mo):
+    delimiter_dict = mo.ui.dropdown(options={"pipe ('|')": "|", "comma":",", "tab":"\t"}, value="pipe ('|')", label="*Delimiter*:")
+    return (delimiter_dict,)
+
+
+@app.cell
+def _(mo):
     models = mo.ui.dropdown(
         options=["la_core_web_sm", "la_core_web_md", "la_core_web_lg"],  label="*Model to use*", value="la_core_web_sm"
     )
@@ -80,8 +87,8 @@ def _(file_area, mo):
 
 
 @app.cell
-def _():
-    divider = "|"
+def _(delimiter_dict):
+    divider = delimiter_dict.value
     return (divider,)
 
 
