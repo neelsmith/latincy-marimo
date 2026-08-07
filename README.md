@@ -34,8 +34,6 @@ uv sync --no-install-project
 
 `uv sync --no-install-project` installs runtime dependencies from [pyproject.toml](pyproject.toml), including `marimo`, `spacy`, and `la_core_web_sm`.
 
-The notebooks require `la_core_web_sm` to be installed in your environment. They do not include fallback behavior.
-
 Notes:
 
 - The model is installed from Hugging Face using a direct wheel URL.
@@ -48,15 +46,13 @@ uv pip install --python .venv/bin/python "la-core-web-sm @ https://huggingface.c
 
 ## Run Marimo Notebooks
 
-Start from the project root with your virtual environment active. Open a notebook in edit mode:
+Start from the project root with your virtual environment active. Open a notebook in edit mode, e.g.:
 
 ```bash
 marimo edit marimo/latin-manual.py
 ```
 
-```bash
-marimo edit marimo/latin-from_file.py
-```
+
 
 Run a notebook as an app:
 

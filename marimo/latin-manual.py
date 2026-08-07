@@ -27,30 +27,8 @@ def _(text_area):
 
 
 @app.cell
-def _(mo):
-    mo.md("""
-    *Frequency of individual tokens*:
-    """)
-    return
-
-
-@app.cell
-def _(mo, tokenlemmalist):
-    mo.md(tokenlemmalist)
-    return
-
-
-@app.cell
-def _(mo):
-    mo.md("""
-    *Frequency of vocabulary items (lexemes)*:
-    """)
-    return
-
-
-@app.cell
-def _(lemmalist, mo):
-    mo.md(lemmalist)
+def _(side_by_side):
+    side_by_side
     return
 
 
@@ -60,6 +38,43 @@ def _(mo):
     ## UI
     """)
     return
+
+
+@app.cell
+def _(lemmalist, mo, tokenlemmalist):
+    # Results
+    left_content = tokenlemmalist
+    right_content = lemmalist
+
+    # 1. Define left scrollable column
+    left_col = mo.vstack([
+        mo.md(f"### Frequency of individual *forms* (tokens)\n\n{left_content}")
+    ]).style({
+        "max-height": "900px",
+        "overflow-y": "auto",
+        "padding": "12px",
+        "border": "1px solid #e2e8f0",
+        "border-radius": "8px",
+        "width": "100%"
+    })
+
+    # 2. Define right scrollable column
+    right_col = mo.vstack([
+        mo.md(f"### Frequency of *vocabulary items* (lexemes)\n\n{right_content}")
+    ]).style({
+        "max-height": "900px",
+        "overflow-y": "auto",
+        "padding": "12px",
+        "border": "1px solid #e2e8f0",
+        "border-radius": "8px",
+        "width": "100%"
+    })
+
+    # 3. Combine side-by-side using hstack
+    side_by_side = mo.hstack([left_col, right_col], widths="equal", gap=1)
+
+
+    return (side_by_side,)
 
 
 @app.cell
@@ -94,28 +109,10 @@ def _(doc):
     return (lexical,)
 
 
-@app.cell
-def _(lexical):
-    [token.text for token in lexical]
-    return
-
-
-@app.cell
-def _(lexical):
-    [token.lemma_ for token in lexical]
-    return
-
-
-@app.cell
-def _(lexical):
-    [token.text +  f" (< *{token.lemma_}*)"  for token in lexical]
-    return
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Count
+    ## Counting
     """)
     return
 
