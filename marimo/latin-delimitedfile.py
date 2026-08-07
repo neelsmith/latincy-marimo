@@ -15,11 +15,28 @@ def _():
     return mo, spacy
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md("""
     # FindLatin token and lexeme counts for delimited-text file using `latincy`
     """)
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _(models):
+    models
+    return
+
+
+@app.cell
+def _(mo, models):
+    mo.md(f"Using model `{models.value}`")
     return
 
 
@@ -41,6 +58,14 @@ def _(mo):
     ## UI
     """)
     return
+
+
+@app.cell
+def _(mo):
+    models = mo.ui.dropdown(
+        options=["la_core_web_sm", "la_core_web_md", "la_core_web_lg"],  label="*Model to use*", value="la_core_web_sm"
+    )
+    return (models,)
 
 
 @app.cell
@@ -101,7 +126,6 @@ def _(lemmalist, mo, tokenlemmalist):
 
     # 3. Combine side-by-side using hstack
     side_by_side = mo.hstack([left_col, right_col], widths="equal", gap=1)
-
     return (side_by_side,)
 
 
@@ -128,8 +152,14 @@ def _(mo):
 
 
 @app.cell
-def _(spacy):
-    latinnlp = spacy.load("la_core_web_sm")
+def _(models):
+    str(models.value)
+    return
+
+
+@app.cell
+def _(models, spacy):
+    latinnlp = spacy.load(models.value)
     return (latinnlp,)
 
 
