@@ -1,14 +1,14 @@
 # latincy-marimo
 
-This repository hosts [marimo notebooks](https://marimo.io) illustrating how to use `latincy` text models for Latin token and lexeme analysis.
+This repository hosts [marimo notebooks](https://marimo.io) illustrating how to use `latincy` text models for Latin token and lexeme analysis. Marimo notebooks are in the `marimo` directory; sample texts are in the `data` directory.
 
 ## Installing and running
 
 ### Prerequisites
 
-- Python 3.10-3.13
+- python 3.10-3.13
 - `uv`
-- macOS/Linux shell (commands below use `bash`/`zsh` style)
+
 
 
 ### One-time set-up
