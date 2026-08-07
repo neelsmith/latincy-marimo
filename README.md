@@ -9,7 +9,7 @@ This repository hosts [marimo notebooks](https://marimo.io) illustrating how to 
 ### Prerequisites
 
 - python 3.10-3.13
-- `uv`
+- [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
 
 
 

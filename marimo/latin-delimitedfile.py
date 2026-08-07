@@ -3,7 +3,7 @@ import marimo
 __generated_with = "0.23.16"
 app = marimo.App(
     width="columns",
-    layout_file="layouts/latin-from_file.grid.json",
+    layout_file="layouts/latin-delimitedfile.grid.json",
 )
 
 
@@ -18,7 +18,27 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    # Latin token and lexeme counts using `latincy`
+    # FindLatin token and lexeme counts for delimited-text file using `latincy`
+    """)
+    return
+
+
+@app.cell
+def _(delimiter_dict):
+    delimiter_dict
+    return
+
+
+@app.cell
+def _(models):
+    models
+    return
+
+
+@app.cell
+def _(mo, models):
+    mo.md(f"""
+    Using model `{models.value}`
     """)
     return
 
@@ -44,8 +64,22 @@ def _(mo):
 
 
 @app.cell
+def _(mo):
+    delimiter_dict = mo.ui.dropdown(options={"pipe ('|')": "|", "comma":",", "tab":"\t"}, value="pipe ('|')", label="*Delimiter*:")
+    return (delimiter_dict,)
+
+
+@app.cell
+def _(mo):
+    models = mo.ui.dropdown(
+        options=["la_core_web_sm", "la_core_web_md", "la_core_web_lg"],  label="*Model to use*", value="la_core_web_sm"
+    )
+    return (models,)
+
+
+@app.cell
 def _(file_area, mo):
-    uploadlabel = "*Please select a file to upload*:"
+    uploadlabel = "*Please select a delimited-text file to upload*:"
     if file_area.name():
         uploadlabel = f"Uploaded `{file_area.name()}`"
     mo.md(uploadlabel)
@@ -53,8 +87,8 @@ def _(file_area, mo):
 
 
 @app.cell
-def _():
-    divider = "|"
+def _(delimiter_dict):
+    divider = delimiter_dict.value
     return (divider,)
 
 
@@ -101,8 +135,6 @@ def _(lemmalist, mo, tokenlemmalist):
 
     # 3. Combine side-by-side using hstack
     side_by_side = mo.hstack([left_col, right_col], widths="equal", gap=1)
-
-
     return (side_by_side,)
 
 
@@ -129,8 +161,14 @@ def _(mo):
 
 
 @app.cell
-def _(spacy):
-    latinnlp = spacy.load("la_core_web_sm")
+def _(models):
+    str(models.value)
+    return
+
+
+@app.cell
+def _(models, spacy):
+    latinnlp = spacy.load(models.value)
     return (latinnlp,)
 
 

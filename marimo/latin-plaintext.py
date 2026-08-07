@@ -1,7 +1,10 @@
 import marimo
 
 __generated_with = "0.23.16"
-app = marimo.App(width="columns", layout_file="layouts/latin-manual.grid.json")
+app = marimo.App(
+    width="columns",
+    layout_file="layouts/latin-plaintext.grid.json",
+)
 
 
 @app.cell(hide_code=True)
@@ -12,10 +15,15 @@ def _():
     return mo, spacy
 
 
-@app.cell(hide_code=True)
+@app.cell
+def _():
+    return
+
+
+@app.cell
 def _(mo):
     mo.md("""
-    # Latin token and lexeme counts using `latincy`
+    # Find Latin token and lexeme counts for plain-text file using `latincy`
     """)
     return
 
@@ -29,17 +37,16 @@ def _(models):
 @app.cell
 def _(mo, models):
     mo.md(f"Using model `{models.value}`")
-
     return
 
 
 @app.cell(hide_code=True)
-def _(text_area):
-    text_area
+def _(file_area):
+    file_area
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(side_by_side):
     side_by_side
     return
@@ -62,8 +69,34 @@ def _(mo):
 
 
 @app.cell
+def _(file_area, mo):
+    uploadlabel = "*Please select a file to upload*:"
+    if file_area.name():
+        uploadlabel = f"Uploaded `{file_area.name()}`"
+    mo.md(uploadlabel)
+    return
+
+
+@app.cell
+def _():
+    divider = "|"
+    return
+
+
+@app.cell
+def _(mo):
+    file_area = mo.ui.file(kind="area")
+    return (file_area,)
+
+
+@app.cell
+def _(file_area):
+    raw = file_area.contents()
+    return (raw,)
+
+
+@app.cell
 def _(lemmalist, mo, tokenlemmalist):
-    # Results
     left_content = tokenlemmalist
     right_content = lemmalist
 
@@ -93,14 +126,63 @@ def _(lemmalist, mo, tokenlemmalist):
 
     # 3. Combine side-by-side using hstack
     side_by_side = mo.hstack([left_col, right_col], widths="equal", gap=1)
-
     return (side_by_side,)
 
 
 @app.cell
-def _(mo):
-    text_area = mo.ui.text_area(value = "Tityre, tu patulae recubans sub tegmine fagi silvestrem tenui Musam meditaris avena.", label = "*Paste in or type Latin text to analyze*:", full_width=True)
-    return (text_area,)
+def _(file_area, raw):
+    stringlines =[]
+    if file_area.contents():
+        stringlines = raw.decode("utf-8").splitlines()
+    return (stringlines,)
+
+
+@app.cell
+def _(stringlines):
+    fulltext = "\n".join([s for s in stringlines])
+    return (fulltext,)
+
+
+@app.cell
+def _(lemmacounts):
+    hapax = [cnt for cnt in lemmacounts if cnt[1] == 1]
+    return (hapax,)
+
+
+@app.cell
+def _(hapax):
+    len(hapax)
+    return
+
+
+@app.cell
+def _(lemmacounts):
+    len(lemmacounts)
+    return
+
+
+@app.cell
+def _(tokencounts):
+    len(tokencounts)
+    return
+
+
+@app.cell
+def _(tokencounts):
+    tokenhapax = [cnt for cnt in tokencounts if cnt[1] == 1]
+    return (tokenhapax,)
+
+
+@app.cell
+def _(tokenhapax):
+    len(tokenhapax)
+    return
+
+
+@app.cell
+def _(lemmacounts):
+    sum([cnt[1] for cnt in lemmacounts])
+    return
 
 
 @app.cell(hide_code=True)
@@ -118,8 +200,8 @@ def _(models, spacy):
 
 
 @app.cell
-def _(latinnlp, text_area):
-    doc = latinnlp(text_area.value)
+def _(fulltext, latinnlp):
+    doc = latinnlp(fulltext)
     return (doc,)
 
 
@@ -132,8 +214,13 @@ def _(doc):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Counting
+    ## Count
     """)
+    return
+
+
+@app.cell
+def _():
     return
 
 
@@ -153,7 +240,7 @@ def _(Counter, lexical):
 @app.cell
 def _(Counter, lexical):
     tokencounts = Counter([token.text for token in lexical]).most_common()
-    return
+    return (tokencounts,)
 
 
 @app.cell

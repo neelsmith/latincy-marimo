@@ -415,6 +415,46 @@ wheels = [
 ]
 
 [[package]]
+name = "la-core-web-lg"
+version = "3.9.6"
+source = { url = "https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-3.9.6-py3-none-any.whl" }
+dependencies = [
+    { name = "la-latincy-lookups" },
+    { name = "latincy-preprocess" },
+    { name = "spacy" },
+]
+wheels = [
+    { url = "https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-3.9.6-py3-none-any.whl", hash = "sha256:44309acc49e7fecae24ac77738676c4da67db14fa403299c8146f21fddfbcaf9" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "la-latincy-lookups", specifier = ">=1.0.0" },
+    { name = "latincy-preprocess", specifier = ">=0.2.0,<0.4.0" },
+    { name = "spacy", specifier = ">=3.8.11,<3.9.0" },
+]
+
+[[package]]
+name = "la-core-web-md"
+version = "3.9.6"
+source = { url = "https://huggingface.co/latincy/la_core_web_md/resolve/main/la_core_web_md-3.9.6-py3-none-any.whl" }
+dependencies = [
+    { name = "la-latincy-lookups" },
+    { name = "latincy-preprocess" },
+    { name = "spacy" },
+]
+wheels = [
+    { url = "https://huggingface.co/latincy/la_core_web_md/resolve/main/la_core_web_md-3.9.6-py3-none-any.whl", hash = "sha256:59d9c1754fd3db9cb27f16e0dfe6eeacbccef9ac367ac10a80ac5129f2033040" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "la-latincy-lookups", specifier = ">=1.0.0" },
+    { name = "latincy-preprocess", specifier = ">=0.2.0,<0.4.0" },
+    { name = "spacy", specifier = ">=3.8.11,<3.9.0" },
+]
+
+[[package]]
 name = "la-core-web-sm"
 version = "3.9.6"
 source = { url = "https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl" }
@@ -451,6 +491,8 @@ name = "latincy-marimo"
 version = "1.0.0"
 source = { editable = "." }
 dependencies = [
+    { name = "la-core-web-lg" },
+    { name = "la-core-web-md" },
     { name = "la-core-web-sm" },
     { name = "marimo" },
     { name = "spacy" },
@@ -463,6 +505,8 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "la-core-web-lg", url = "https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-3.9.6-py3-none-any.whl" },
+    { name = "la-core-web-md", url = "https://huggingface.co/latincy/la_core_web_md/resolve/main/la_core_web_md-3.9.6-py3-none-any.whl" },
     { name = "la-core-web-sm", url = "https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl" },
     { name = "marimo", specifier = ">=0.20.4" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.5" },
