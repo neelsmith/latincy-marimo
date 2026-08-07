@@ -415,10 +415,43 @@ wheels = [
 ]
 
 [[package]]
+name = "la-core-web-sm"
+version = "3.9.6"
+source = { url = "https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl" }
+dependencies = [
+    { name = "la-latincy-lookups" },
+    { name = "latincy-preprocess" },
+    { name = "spacy" },
+]
+wheels = [
+    { url = "https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl", hash = "sha256:4715eb0a5a4e61003116fd340c31520860cd9ecfe2133ea3685521b89a3ccf90" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "la-latincy-lookups", specifier = ">=1.0.0" },
+    { name = "latincy-preprocess", specifier = ">=0.2.0,<0.4.0" },
+    { name = "spacy", specifier = ">=3.8.11,<3.9.0" },
+]
+
+[[package]]
+name = "la-latincy-lookups"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "spacy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/aa/8e/2004549437c10f4c0dcb32e608f892763d07620b760da9b967f67acb7585/la_latincy_lookups-1.0.0.tar.gz", hash = "sha256:4a200c2a9f4b0bf2caa861c742a12dd3d608fb0195c1f3389f47e2f1303e2cd9", size = 2317834, upload-time = "2026-03-21T12:59:34.51Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ba/69/c3fce55f64cb36bf3dfcb7fd078d65206436dc5d77839f8bac03b35616e7/la_latincy_lookups-1.0.0-py3-none-any.whl", hash = "sha256:629c84d7664be8fecdeeeb9bb39d41a752f7aee6a200fc6243d63c7511850d48", size = 2526733, upload-time = "2026-03-21T12:59:30.289Z" },
+]
+
+[[package]]
 name = "latincy-marimo"
 version = "1.0.0"
 source = { editable = "." }
 dependencies = [
+    { name = "la-core-web-sm" },
     { name = "marimo" },
     { name = "spacy" },
 ]
@@ -430,11 +463,25 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "la-core-web-sm", url = "https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl" },
     { name = "marimo", specifier = ">=0.20.4" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.5" },
     { name = "spacy", specifier = ">=3.7" },
 ]
 provides-extras = ["dev"]
+
+[[package]]
+name = "latincy-preprocess"
+version = "0.3.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b7/d0/638ac5e137b8e7d8ca3202edfbdaad50138d491a9729b15d25641c259de5/latincy_preprocess-0.3.3.tar.gz", hash = "sha256:9c47c8dfd89d62db6e383733b60f64dc63cd4d9690f53ee5e8fd26a6c377068e", size = 165857, upload-time = "2026-07-29T01:26:22.811Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/43/b3/acb30a5aa5319bd09fdfcd04ca5da2cf99b5f8ed6e859184da8c947ce0e1/latincy_preprocess-0.3.3-cp310-abi3-macosx_10_12_x86_64.whl", hash = "sha256:f90b5589f2d36aa074231be1f0304e386709909904e310fe69828c4267e34931", size = 457678, upload-time = "2026-07-29T01:26:15.812Z" },
+    { url = "https://files.pythonhosted.org/packages/7f/9c/d6698a49b0bcfc8682bc9fdc35f5d0fd1639e272240a6d90c86ae353c244/latincy_preprocess-0.3.3-cp310-abi3-macosx_11_0_arm64.whl", hash = "sha256:c59de1e01a50738e973d5fa8cc48d5c35437373f241a648d2f9204ed143c5df7", size = 452702, upload-time = "2026-07-29T01:26:17.514Z" },
+    { url = "https://files.pythonhosted.org/packages/c2/c9/eba2016c5789d2d311149825aa448005fd7dce14aac9daaa417c2abff2d7/latincy_preprocess-0.3.3-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:163d655b6d4d1c275260b09eefa669a5913e308dc8c8d953923448e66a405c7e", size = 483362, upload-time = "2026-07-29T01:26:19.008Z" },
+    { url = "https://files.pythonhosted.org/packages/23/ae/28e6f427416798e5527029ea8c7b56bb54284b69324d026f4d76da2d170a/latincy_preprocess-0.3.3-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:66568facdfd12e498068fbe61f416c227dcf2ee28dafa8bb958c81fa4be9c7af", size = 492381, upload-time = "2026-07-29T01:26:20.225Z" },
+    { url = "https://files.pythonhosted.org/packages/0a/c8/89bd972723def6945e52f6b37172657d64cf108cea51295f7f038daac133/latincy_preprocess-0.3.3-cp310-abi3-win_amd64.whl", hash = "sha256:4f1027aa389766288672538297e79fd6f373c34781143c5989b6b5e4e2a63407", size = 358656, upload-time = "2026-07-29T01:26:21.49Z" },
+]
 
 [[package]]
 name = "loro"
