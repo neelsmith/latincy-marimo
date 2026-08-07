@@ -1,7 +1,7 @@
 import marimo
 
-__generated_with = "0.20.4"
-app = marimo.App(width="columns", layout_file="layouts/latin1.grid.json")
+__generated_with = "0.23.16"
+app = marimo.App(width="columns", layout_file="layouts/latin-manual.grid.json")
 
 
 @app.cell(hide_code=True)
@@ -64,7 +64,7 @@ def _(mo):
 
 @app.cell
 def _(mo):
-    text_area = mo.ui.text_area(value = "Gallia est omnis divisa in partes tres.", label = "*Paste in or type Latin text to analyze*:", full_width=True)
+    text_area = mo.ui.text_area(value = "Tityre, tu patulae recubans sub tegmine fagi silvestrem tenui Musam meditaris avena.", label = "*Paste in or type Latin text to analyze*:", full_width=True)
     return (text_area,)
 
 
