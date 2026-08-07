@@ -36,7 +36,9 @@ def _(models):
 
 @app.cell
 def _(mo, models):
-    mo.md(f"Using model `{models.value}`")
+    mo.md(f"""
+    Using model `{models.value}`
+    """)
     return
 
 
