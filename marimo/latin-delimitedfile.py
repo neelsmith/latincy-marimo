@@ -3,7 +3,7 @@ import marimo
 __generated_with = "0.23.16"
 app = marimo.App(
     width="columns",
-    layout_file="layouts/latin-from_file.grid.json",
+    layout_file="layouts/latin-delimitedfile.grid.json",
 )
 
 
@@ -15,10 +15,10 @@ def _():
     return mo, spacy
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(mo):
     mo.md("""
-    # Latin token and lexeme counts using `latincy`
+    # FindLatin token and lexeme counts for delimited-text file using `latincy`
     """)
     return
 
@@ -45,7 +45,7 @@ def _(mo):
 
 @app.cell
 def _(file_area, mo):
-    uploadlabel = "*Please select a file to upload*:"
+    uploadlabel = "*Please select a delimited-text file to upload*:"
     if file_area.name():
         uploadlabel = f"Uploaded `{file_area.name()}`"
     mo.md(uploadlabel)
@@ -101,7 +101,6 @@ def _(lemmalist, mo, tokenlemmalist):
 
     # 3. Combine side-by-side using hstack
     side_by_side = mo.hstack([left_col, right_col], widths="equal", gap=1)
-
 
     return (side_by_side,)
 

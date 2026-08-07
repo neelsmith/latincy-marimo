@@ -15,10 +15,10 @@ def _():
     return mo, spacy
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(mo):
     mo.md("""
-    # Latin token and lexeme counts using `latincy`
+    # Find Latin token and lexeme counts for plain-text file using `latincy`
     """)
     return
 
@@ -101,7 +101,6 @@ def _(lemmalist, mo, tokenlemmalist):
 
     # 3. Combine side-by-side using hstack
     side_by_side = mo.hstack([left_col, right_col], widths="equal", gap=1)
-
     return (side_by_side,)
 
 
@@ -117,6 +116,48 @@ def _(file_area, raw):
 def _(stringlines):
     fulltext = "\n".join([s for s in stringlines])
     return (fulltext,)
+
+
+@app.cell
+def _(lemmacounts):
+    hapax = [cnt for cnt in lemmacounts if cnt[1] == 1]
+    return (hapax,)
+
+
+@app.cell
+def _(hapax):
+    len(hapax)
+    return
+
+
+@app.cell
+def _(lemmacounts):
+    len(lemmacounts)
+    return
+
+
+@app.cell
+def _(tokencounts):
+    len(tokencounts)
+    return
+
+
+@app.cell
+def _(tokencounts):
+    tokenhapax = [cnt for cnt in tokencounts if cnt[1] == 1]
+    return (tokenhapax,)
+
+
+@app.cell
+def _(tokenhapax):
+    len(tokenhapax)
+    return
+
+
+@app.cell
+def _(lemmacounts):
+    sum([cnt[1] for cnt in lemmacounts])
+    return
 
 
 @app.cell(hide_code=True)
@@ -155,6 +196,11 @@ def _(mo):
 
 @app.cell
 def _():
+    return
+
+
+@app.cell
+def _():
     from collections import Counter
 
     return (Counter,)
@@ -169,7 +215,7 @@ def _(Counter, lexical):
 @app.cell
 def _(Counter, lexical):
     tokencounts = Counter([token.text for token in lexical]).most_common()
-    return
+    return (tokencounts,)
 
 
 @app.cell
