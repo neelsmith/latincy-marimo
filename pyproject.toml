@@ -17,6 +17,7 @@ classifiers = [
 dependencies = [
     "marimo>=0.20.4",
     "spacy>=3.7",
+    "la-core-web-sm @ https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl",
 ]
 
 [project.optional-dependencies]
