@@ -2,6 +2,8 @@
 
 This repository hosts [marimo notebooks](https://marimo.io) illustrating how to use `latincy` text models for Latin token and lexeme analysis. Marimo notebooks are in the `marimo` directory; sample texts are in the `data` directory.
 
+`latin-manual.py` lets you enter Latin text (by typing or pasting into a text field), then uses `latincy` to count the frequencies of individual tokens and their lemmas (dictionary forms). `latin-delimitedfile.py` does the same thing after reading in a delimited-text file. The delimited-text file should have two columns, with a canonical reference in the first column and the corresponding text content in the second column. `data/vergileclogues.cex` is a delimited-text file with a text of Virgil's *Eclogues*.
+
 ## Installing and running
 
 ### Prerequisites
