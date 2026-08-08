@@ -36,6 +36,93 @@ def _(text_area):
     return
 
 
+@app.cell
+def _(doc, mo):
+    sdict = {f"{sentidx+1}: {sent[:3]}...":sentidx for sentidx, sent in enumerate(doc.sents)}
+    smenu = mo.ui.dropdown(options=sdict, label="*Sentence to analyze*:")
+    smenu
+    return sdict, smenu
+
+
+@app.cell
+def _(orientation):
+    orientation.value
+    return
+
+
+@app.cell
+def _(mo):
+    orientation = mo.ui.dropdown(options={"horizontally": "RL", "vertically": "BT"}, value="vertically", label="*Orient graph*")
+
+    orientation
+    return (orientation,)
+
+
+@app.cell
+def _(smenu):
+    smenu.selected_key
+    return
+
+
+@app.cell
+def _(doc, sdict, smenu):
+    schoice = None
+    if smenu.selected_key:
+        stidx = sdict[smenu.selected_key]
+        schoice = [s for senum, s in enumerate(doc.sents) if senum == stidx][0]
+
+    return (schoice,)
+
+
+@app.cell
+def _(schoice):
+    syntaxdata = tabulatesyntax(schoice)
+    return (syntaxdata,)
+
+
+@app.cell
+def _(mo, schoice):
+    mo.md(f"Analysis of sentence: *{schoice}*")
+    return
+
+
+@app.cell
+def _(mo, syntaxdata):
+    mo.md(syntaxtable_md(syntaxdata))
+    return
+
+
+@app.cell
+def _(mo, orientation, syntaxdata):
+    mo.mermaid(mermaidifytable(syntaxdata, orientation.value))
+    return
+
+
+@app.function
+def mermaidrow(r):
+    token,id,head,headid,relation = r.split("|")
+    return f"{id}[{token}] -- \"{relation}\" --> {headid}[{head}]"
+
+
+@app.function
+def mermaidifytable(tbl, orient):
+    hdr = f"graph {orient}\n\n"
+    return hdr + "\n".join([mermaidrow(r) for r in tbl.split("\n")])
+
+
+@app.cell
+def _(syntaxdata):
+    syntaxdata
+    return
+
+
+@app.cell
+def _():
+    #Jakob1["Jakob Saudek"] --> JakobRozel([ ])
+    # A -- "text" --> B
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
@@ -49,12 +136,6 @@ def _(doc, mo):
     stables = [f"## Sentence {sentidx+1}\n{syntaxtable_md(tabulatesyntax(sent))}" for sentidx, sent in enumerate(doc.sents)]
     mo.md("\n\n".join(stables))
     
-    return
-
-
-@app.cell
-def _(doc, mo):
-    mo.md(syntaxtable_md(tabulatesyntax(doc[:25])))
     return
 
 
