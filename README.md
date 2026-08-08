@@ -11,7 +11,8 @@ Some notebooks include parallel versions for manual text input (by typing or pas
 
 
 
-- *Lemmatization*. `lemmatization/latin-manual.py` lets you enter Latin text , then uses `latincy` to count the frequencies of individual tokens and their lemmas (dictionary forms). `latin-delimitedfile.py` does the same thing after reading in a delimited-text file. The . 
+- *Lemmatization*. `marimo/lemmatization/latin-manual.py`, `marimo/lemmatization/latin-delimitedfile.py` and `marimo/lemmatization/latin-plainttext.py` use `latincy` to count the frequencies of individual tokens and their lemmas (dictionary forms).
+- *Syntactic analysis*. `marimo/syntax/syntax-manual.py` and `marimo/syntax/syntax-delimitedfile.py` use `latincy` to analyze the syntactic structure ("dependencies") of a text, and to visualize the analysis both as mermaid diagrams and tabular data.
 
 ## Installing and running
 
@@ -35,19 +36,15 @@ uv sync --no-install-project
 Launch a notebook with normal `marimo` commands like:
 
 ```bash
-marimo edit marimo/latin-manual.py
+marimo edit marimo/lemmatization/latin-manual.py
 ```
 
 or 
 
 ```bash
-marimo run marimo/latin-manual.py
+marimo run marimo/lemmatization/latin-manual.py
 ```
 
 ### Note on installation
 
-`uv sync --no-install-project` installs runtime dependencies defined in `pyproject.toml`, including `marimo`, `spacy`, and `la_core_web_sm`. The `latincy` model is installed from Hugging Face using a direct wheel URL. If you need to install it manually, run:
-
-```bash
-uv pip install --python .venv/bin/python "la-core-web-sm @ https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl"
-```
+`uv sync --no-install-project` installs runtime dependencies defined in `pyproject.toml`, including `marimo`, `spacy`, and `latincy` text models from Hugging Face, using a direct wheel URL for the Hugging Face models.
