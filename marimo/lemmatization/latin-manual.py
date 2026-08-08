@@ -28,8 +28,9 @@ def _(models):
 
 @app.cell
 def _(mo, models):
-    mo.md(f"Using model `{models.value}`")
-
+    mo.md(f"""
+    Using model `{models.value}`
+    """)
     return
 
 
@@ -93,7 +94,6 @@ def _(lemmalist, mo, tokenlemmalist):
 
     # 3. Combine side-by-side using hstack
     side_by_side = mo.hstack([left_col, right_col], widths="equal", gap=1)
-
     return (side_by_side,)
 
 
