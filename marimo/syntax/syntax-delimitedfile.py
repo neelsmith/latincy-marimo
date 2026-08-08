@@ -20,8 +20,13 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(displaytab, mo, models, orientation, smenu, text_area):
-    mo.vstack([ mo.md("**Settings:**"), text_area,  mo.hstack([ models, mo.md(f"""***Using model*** `{models.value}`""")], justify="start", gap=0.01), mo.hstack([smenu, orientation, displaytab], justify="start")])
+def _():
+    return
+
+
+@app.cell(hide_code=True)
+def _(displaytab, file_area, mo, models, orientation, smenu, uploadlabel):
+    mo.vstack([mo.md("**Settings:**"), mo.hstack([file_area, mo.md(uploadlabel)], justify="start"), mo.hstack([ models, mo.md(f"""***Using model*** `{models.value}`""")], justify="start", gap=0.01), mo.hstack([smenu, orientation, displaytab], justify="start")])
     return
 
 
@@ -76,6 +81,33 @@ def _(mo):
 
 @app.cell
 def _(mo):
+    delimiter_dict = mo.ui.dropdown(options={"pipe ('|')": "|", "comma":",", "tab":"\t"}, value="pipe ('|')", label="*Delimiter*:")
+    return (delimiter_dict,)
+
+
+@app.cell
+def _(delimiter_dict):
+    divider = delimiter_dict.value
+    return (divider,)
+
+
+@app.cell
+def _(mo):
+    file_area = mo.ui.file(kind="area",label="*Choose a delimited-text file*")
+    return (file_area,)
+
+
+@app.cell
+def _(file_area):
+    uploadlabel = "No file uploaded."
+    if file_area.name():
+        uploadlabel = f"Uploaded `{file_area.name()}`"
+
+    return (uploadlabel,)
+
+
+@app.cell
+def _(mo):
     displaytab = mo.ui.checkbox(label="*Include graph data as table*")
     return (displaytab,)
 
@@ -96,7 +128,7 @@ def _(doc, mo):
 @app.cell
 def _(mo):
     text_area = mo.ui.text_area(value = "ac plerique suam ipsi vitam narrare fiduciam potius morum quam adrogantiam arbitrati sunt, nec id Rutilio et Scauro citra fidem aut obtrectationi fuit: adeo virtutes isdem temporibus optime aestimantur, quibus facillime gignuntur. at nunc narraturo mihi vitam defuncti hominis venia opus fuit, quam non petissem incusaturus: tam saeva et infesta virtutibus tempora.", full_width=True, label="*Text to analyze*:")
-    return (text_area,)
+    return
 
 
 @app.cell
@@ -129,8 +161,8 @@ def _(models, spacy):
 
 
 @app.cell
-def _(latinnlp, text_area):
-    doc = latinnlp(text_area.value)
+def _(fulltext, latinnlp):
+    doc = latinnlp(fulltext) #latinnlp(text_area.value)
     return (doc,)
 
 
@@ -140,6 +172,26 @@ def _(mo):
     ## Organizing and formatting data
     """)
     return
+
+
+@app.cell
+def _(file_area):
+    raw = file_area.contents()
+    return (raw,)
+
+
+@app.cell
+def _(file_area, raw):
+    stringlines =[]
+    if file_area.contents():
+        stringlines = raw.decode("utf-8").splitlines()
+    return (stringlines,)
+
+
+@app.cell
+def _(divider, stringlines):
+    fulltext = "\n".join([s.split(divider)[1] for s in stringlines])
+    return (fulltext,)
 
 
 @app.cell
@@ -165,7 +217,6 @@ def _(mo, orientation, syntaxdata):
     tabdisplay = mo.md("*Choose a sentence to analyze*")
     if syntaxdata:
         tabdisplay = mo.mermaid(syntax_mermaid(syntaxdata, orientation.value))
-
     return (tabdisplay,)
 
 
@@ -210,14 +261,6 @@ def syntax_mermaid(tbl, orient):
     "Format delimited-text table with syntax data as a Mermaid graph."
     hdr = f"graph {orient}\n\n"
     return hdr + "\n".join([syntax_mermaidrow(r) for r in tbl.split("\n")])
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md("""
-    ## Notes
-    """)
-    return
 
 
 if __name__ == "__main__":
