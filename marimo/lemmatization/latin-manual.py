@@ -20,13 +20,13 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(models):
     models
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo, models):
     mo.md(f"""
     Using model `{models.value}`
@@ -40,9 +40,15 @@ def _(text_area):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(side_by_side):
     side_by_side
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.Html("<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>")
     return
 
 

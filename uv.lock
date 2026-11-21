@@ -6,6 +6,10 @@ resolution-markers = [
     "python_full_version == '3.11.*'",
     "python_full_version < '3.11'",
 ]
+conflicts = [[
+    { package = "latincy-marimo", extra = "greek" },
+    { package = "latincy-marimo", extra = "latin" },
+]]
 
 [[package]]
 name = "annotated-doc"
@@ -30,9 +34,9 @@ name = "anyio"
 version = "4.14.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "exceptiongroup", marker = "python_full_version < '3.11'" },
+    { name = "exceptiongroup", marker = "python_full_version < '3.11' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
     { name = "idna" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/61/cc/a381afa6efea9f496eff839d4a6a1aed3bfafc7b3ab4b0d1b243a12573dd/anyio-4.14.2.tar.gz", hash = "sha256:cfa139f3ed1a23ee8f88a145ddb5ac7605b8bbfd8592baacd7ce3d8bb4313c7f", size = 260176, upload-time = "2026-07-12T20:29:07.082Z" }
 wheels = [
@@ -44,9 +48,9 @@ name = "blis"
 version = "1.3.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
+    { name = "numpy", version = "2.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d0/d0/d8cc8c9a4488a787e7fa430f6055e5bd1ddb22c340a751d9e901b82e2efe/blis-1.3.3.tar.gz", hash = "sha256:034d4560ff3cc43e8aa37e188451b0440e3261d989bb8a42ceee865607715ecd", size = 2644873, upload-time = "2025-11-17T12:28:30.511Z" }
 wheels = [
@@ -103,7 +107,7 @@ name = "cffi"
 version = "2.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pycparser", marker = "implementation_name != 'PyPy'" },
+    { name = "pycparser", marker = "implementation_name != 'PyPy' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/9e/ef/008a1939e372c06329a3fce4279c02f328488f3526744906eeec3da7ad5f/cffi-2.1.1.tar.gz", hash = "sha256:dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be", size = 530807, upload-time = "2026-08-03T21:21:18.939Z" }
 wheels = [
@@ -226,7 +230,7 @@ name = "click"
 version = "8.4.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/76/d4/81420972a676e8ffea40450d8c8c92943e7218a78fe9b64359836cc9876b/click-8.4.2.tar.gz", hash = "sha256:9a6cea6e60b17ebe0a44c5cc636d94f09bd66142c1cd7d8b4cd731c4917a15f6", size = 338000, upload-time = "2026-06-24T17:45:15.148Z" }
 wheels = [
@@ -238,7 +242,7 @@ name = "cloudpathlib"
 version = "0.24.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/06/19/58bc6b5d7d0f81c7209b05445af477e147c486552f96665a5912211839b9/cloudpathlib-0.24.0.tar.gz", hash = "sha256:c521a984e77b47e656fe78e20a7e3e260e0ab45fc69e33ac01094227c979e34a", size = 53600, upload-time = "2026-04-30T00:54:43.265Z" }
 wheels = [
@@ -259,7 +263,7 @@ name = "confection"
 version = "1.3.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/ca/65/efd0fe8a936fc8ca2978cb7b82581fb20d901c6039e746a808f746b7647b/confection-1.3.3.tar.gz", hash = "sha256:f0f6810d567ff73993fe74d218ca5e1ffb6a44fb03f391257fc5d033546cbfaa", size = 54895, upload-time = "2026-03-24T18:45:24.331Z" }
 wheels = [
@@ -328,11 +332,68 @@ name = "exceptiongroup"
 version = "1.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/50/79/66800aadf48771f6b62f7eb014e352e5d06856655206165d775e675a02c9/exceptiongroup-1.3.1.tar.gz", hash = "sha256:8b412432c6055b0b7d14c310000ae93352ed6754f70fa8f7c34141f91c4e3219", size = 30371, upload-time = "2025-11-21T23:01:54.787Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/8a/0e/97c33bf5009bdbac74fd2beace167cab3f978feb69cc36f1ef79360d6c4e/exceptiongroup-1.3.1-py3-none-any.whl", hash = "sha256:a7a39a3bd276781e98394987d3a5701d0c4edffb633bb7a5144577f82c773598", size = 16740, upload-time = "2025-11-21T23:01:53.443Z" },
+]
+
+[[package]]
+name = "grc-dep-web-lg"
+version = "3.8.1"
+source = { url = "https://huggingface.co/latincy/grc_dep_web_lg/resolve/main/grc_dep_web_lg-3.8.1-py3-none-any.whl" }
+dependencies = [
+    { name = "spacy" },
+]
+wheels = [
+    { url = "https://huggingface.co/latincy/grc_dep_web_lg/resolve/main/grc_dep_web_lg-3.8.1-py3-none-any.whl", hash = "sha256:dea02ca3dbbfcd233088ea6da31f9484241fe6c1854efd649642cd27f4b92471" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "spacy", specifier = ">=3.8.11,<3.9.0" }]
+
+[[package]]
+name = "grc-dep-web-md"
+version = "3.8.4"
+source = { url = "https://huggingface.co/latincy/grc_dep_web_md/resolve/main/grc_dep_web_md-3.8.4-py3-none-any.whl" }
+dependencies = [
+    { name = "click" },
+    { name = "latincy-preprocess", version = "0.5.1", source = { registry = "https://pypi.org/simple" }, extra = ["grc"], marker = "extra == 'extra-14-latincy-marimo-greek'" },
+    { name = "spacy" },
+]
+wheels = [
+    { url = "https://huggingface.co/latincy/grc_dep_web_md/resolve/main/grc_dep_web_md-3.8.4-py3-none-any.whl", hash = "sha256:5944b6b425a1ccc00f1743c4a7318fad9b5570f7c2be114ae5b2369f74a01f66" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "click", specifier = ">=8.0" },
+    { name = "latincy-preprocess", extras = ["grc"], specifier = ">=0.5.1" },
+    { name = "spacy", specifier = ">=3.8.11,<3.9.0" },
+]
+
+[[package]]
+name = "grc-dep-web-sm"
+version = "3.8.2"
+source = { url = "https://huggingface.co/latincy/grc_dep_web_sm/resolve/main/grc_dep_web_sm-3.8.2-py3-none-any.whl" }
+dependencies = [
+    { name = "spacy" },
+]
+wheels = [
+    { url = "https://huggingface.co/latincy/grc_dep_web_sm/resolve/main/grc_dep_web_sm-3.8.2-py3-none-any.whl", hash = "sha256:53eae0a7df5f910a6072a2c7d76425a832dd15f506dc427fa5ac21597349bfad" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "spacy", specifier = ">=3.8.11,<3.9.0" }]
+
+[[package]]
+name = "greek-normalisation"
+version = "0.5.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/1e/bd/25014fd32c8d8e397377607a6b1930fc12bc5ff07f9d45bc02a8f2413a1b/greek-normalisation-0.5.1.tar.gz", hash = "sha256:d4475c049c7fdef504cbecf803c146128ee8dab0ebd15c0c329f2eeca195a311", size = 4726, upload-time = "2020-07-08T00:18:54.48Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/39/eb/e40a5e295a204072cceae38c6b3e187c40f71387d4bd16af4056e74b9c91/greek_normalisation-0.5.1-py3-none-any.whl", hash = "sha256:1414ac584a18a4b422813d80d68cdbf91fbed3118c4ce1d975e1cf0eb9476052", size = 6750, upload-time = "2020-07-08T00:18:53.357Z" },
 ]
 
 [[package]]
@@ -420,7 +481,7 @@ version = "3.9.6"
 source = { url = "https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-3.9.6-py3-none-any.whl" }
 dependencies = [
     { name = "la-latincy-lookups" },
-    { name = "latincy-preprocess" },
+    { name = "latincy-preprocess", version = "0.3.3", source = { registry = "https://pypi.org/simple" } },
     { name = "spacy" },
 ]
 wheels = [
@@ -440,7 +501,7 @@ version = "3.9.6"
 source = { url = "https://huggingface.co/latincy/la_core_web_md/resolve/main/la_core_web_md-3.9.6-py3-none-any.whl" }
 dependencies = [
     { name = "la-latincy-lookups" },
-    { name = "latincy-preprocess" },
+    { name = "latincy-preprocess", version = "0.3.3", source = { registry = "https://pypi.org/simple" } },
     { name = "spacy" },
 ]
 wheels = [
@@ -460,7 +521,7 @@ version = "3.9.6"
 source = { url = "https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl" }
 dependencies = [
     { name = "la-latincy-lookups" },
-    { name = "latincy-preprocess" },
+    { name = "latincy-preprocess", version = "0.3.3", source = { registry = "https://pypi.org/simple" } },
     { name = "spacy" },
 ]
 wheels = [
@@ -488,12 +549,9 @@ wheels = [
 
 [[package]]
 name = "latincy-marimo"
-version = "1.0.0"
-source = { editable = "." }
+version = "0.1.0"
+source = { virtual = "." }
 dependencies = [
-    { name = "la-core-web-lg" },
-    { name = "la-core-web-md" },
-    { name = "la-core-web-sm" },
     { name = "marimo" },
     { name = "spacy" },
 ]
@@ -502,22 +560,40 @@ dependencies = [
 dev = [
     { name = "ruff" },
 ]
+greek = [
+    { name = "grc-dep-web-lg" },
+    { name = "grc-dep-web-md" },
+    { name = "grc-dep-web-sm" },
+]
+latin = [
+    { name = "la-core-web-lg" },
+    { name = "la-core-web-md" },
+    { name = "la-core-web-sm" },
+]
 
 [package.metadata]
 requires-dist = [
-    { name = "la-core-web-lg", url = "https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-3.9.6-py3-none-any.whl" },
-    { name = "la-core-web-md", url = "https://huggingface.co/latincy/la_core_web_md/resolve/main/la_core_web_md-3.9.6-py3-none-any.whl" },
-    { name = "la-core-web-sm", url = "https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl" },
+    { name = "grc-dep-web-lg", marker = "extra == 'greek'", url = "https://huggingface.co/latincy/grc_dep_web_lg/resolve/main/grc_dep_web_lg-3.8.1-py3-none-any.whl" },
+    { name = "grc-dep-web-md", marker = "extra == 'greek'", url = "https://huggingface.co/latincy/grc_dep_web_md/resolve/main/grc_dep_web_md-3.8.4-py3-none-any.whl" },
+    { name = "grc-dep-web-sm", marker = "extra == 'greek'", url = "https://huggingface.co/latincy/grc_dep_web_sm/resolve/main/grc_dep_web_sm-3.8.2-py3-none-any.whl" },
+    { name = "la-core-web-lg", marker = "extra == 'latin'", url = "https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-3.9.6-py3-none-any.whl" },
+    { name = "la-core-web-md", marker = "extra == 'latin'", url = "https://huggingface.co/latincy/la_core_web_md/resolve/main/la_core_web_md-3.9.6-py3-none-any.whl" },
+    { name = "la-core-web-sm", marker = "extra == 'latin'", url = "https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl" },
     { name = "marimo", specifier = ">=0.20.4" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.5" },
     { name = "spacy", specifier = ">=3.7" },
 ]
-provides-extras = ["dev"]
+provides-extras = ["latin", "greek", "dev"]
 
 [[package]]
 name = "latincy-preprocess"
 version = "0.3.3"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.12'",
+    "python_full_version == '3.11.*'",
+    "python_full_version < '3.11'",
+]
 sdist = { url = "https://files.pythonhosted.org/packages/b7/d0/638ac5e137b8e7d8ca3202edfbdaad50138d491a9729b15d25641c259de5/latincy_preprocess-0.3.3.tar.gz", hash = "sha256:9c47c8dfd89d62db6e383733b60f64dc63cd4d9690f53ee5e8fd26a6c377068e", size = 165857, upload-time = "2026-07-29T01:26:22.811Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/43/b3/acb30a5aa5319bd09fdfcd04ca5da2cf99b5f8ed6e859184da8c947ce0e1/latincy_preprocess-0.3.3-cp310-abi3-macosx_10_12_x86_64.whl", hash = "sha256:f90b5589f2d36aa074231be1f0304e386709909904e310fe69828c4267e34931", size = 457678, upload-time = "2026-07-29T01:26:15.812Z" },
@@ -525,6 +601,29 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/c2/c9/eba2016c5789d2d311149825aa448005fd7dce14aac9daaa417c2abff2d7/latincy_preprocess-0.3.3-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:163d655b6d4d1c275260b09eefa669a5913e308dc8c8d953923448e66a405c7e", size = 483362, upload-time = "2026-07-29T01:26:19.008Z" },
     { url = "https://files.pythonhosted.org/packages/23/ae/28e6f427416798e5527029ea8c7b56bb54284b69324d026f4d76da2d170a/latincy_preprocess-0.3.3-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:66568facdfd12e498068fbe61f416c227dcf2ee28dafa8bb958c81fa4be9c7af", size = 492381, upload-time = "2026-07-29T01:26:20.225Z" },
     { url = "https://files.pythonhosted.org/packages/0a/c8/89bd972723def6945e52f6b37172657d64cf108cea51295f7f038daac133/latincy_preprocess-0.3.3-cp310-abi3-win_amd64.whl", hash = "sha256:4f1027aa389766288672538297e79fd6f373c34781143c5989b6b5e4e2a63407", size = 358656, upload-time = "2026-07-29T01:26:21.49Z" },
+]
+
+[[package]]
+name = "latincy-preprocess"
+version = "0.5.1"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.12'",
+    "python_full_version == '3.11.*'",
+    "python_full_version < '3.11'",
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c1/3e/f2dbf33a06292d33b38805f919bc7a1443573693babfbbe0456cf831f8a9/latincy_preprocess-0.5.1.tar.gz", hash = "sha256:d17be0cc629bfa1f2b361e9dea3a7eeb9e0a12d87498d76fd9ab2fc2b87bd7c6", size = 174077, upload-time = "2026-08-07T19:07:14.094Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cf/b0/ae919b37cf417ac50e4d496a777a6ce6f44edff238fce9d182c7707ae21d/latincy_preprocess-0.5.1-cp310-abi3-macosx_10_12_x86_64.whl", hash = "sha256:7574ec6133d607f05ee64d0a8c773f94c9b9cbdbaf5798f2c99632b48877b3c9", size = 466748, upload-time = "2026-08-07T19:07:05.511Z" },
+    { url = "https://files.pythonhosted.org/packages/03/e7/efb59bba2ccd447617a04d4813049f179f9341971ec69f1ed3a6dc1172f7/latincy_preprocess-0.5.1-cp310-abi3-macosx_11_0_arm64.whl", hash = "sha256:6e4d8a7aa63260616b6ac0fbdcb9fd840a8c21db6924e9e15827e3a96efa99b0", size = 461739, upload-time = "2026-08-07T19:07:07.34Z" },
+    { url = "https://files.pythonhosted.org/packages/a0/ea/6b55a49eb6026d9786faffb799e3792dff223ec398d264117a687b4e36bb/latincy_preprocess-0.5.1-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d5baf55141ad40e23a746141f187a34d2b14acf0aab884ce712b2e234bfe7eec", size = 492436, upload-time = "2026-08-07T19:07:08.962Z" },
+    { url = "https://files.pythonhosted.org/packages/e2/1a/ae7f295ebc7b3093d6188413efa1e5d92b77987b32c6b33c62de76232ddc/latincy_preprocess-0.5.1-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4e6cd6c5dc5a44dcf3e7897900f1284e263fec6f30aabbb1750068e1188e4703", size = 501559, upload-time = "2026-08-07T19:07:10.79Z" },
+    { url = "https://files.pythonhosted.org/packages/32/b0/77ed2f9fafa24d960039dda86233cf2cb3d9028115b6c29b72a4798500a6/latincy_preprocess-0.5.1-cp310-abi3-win_amd64.whl", hash = "sha256:21b3732044cf9ba9ac425da24cff412fba47483c01d0472eb3a67fdfe7834914", size = 367678, upload-time = "2026-08-07T19:07:12.585Z" },
+]
+
+[package.optional-dependencies]
+grc = [
+    { name = "greek-normalisation" },
 ]
 
 [[package]]
@@ -614,27 +713,27 @@ name = "marimo"
 version = "0.23.16"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "click", marker = "sys_platform != 'emscripten'" },
+    { name = "click", marker = "sys_platform != 'emscripten' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
     { name = "docutils" },
     { name = "itsdangerous" },
     { name = "jedi" },
-    { name = "loro", marker = "sys_platform != 'android' and sys_platform != 'emscripten'" },
+    { name = "loro", marker = "(sys_platform != 'android' and sys_platform != 'emscripten') or (sys_platform == 'android' and extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin') or (sys_platform == 'emscripten' and extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
     { name = "markdown" },
     { name = "msgspec" },
     { name = "narwhals" },
     { name = "packaging" },
-    { name = "psutil", marker = "sys_platform != 'android' and sys_platform != 'emscripten'" },
+    { name = "psutil", marker = "(sys_platform != 'android' and sys_platform != 'emscripten') or (sys_platform == 'android' and extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin') or (sys_platform == 'emscripten' and extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
     { name = "pygments" },
     { name = "pymdown-extensions" },
     { name = "python-multipart" },
     { name = "pyyaml" },
-    { name = "pyzmq", marker = "sys_platform != 'emscripten'" },
-    { name = "starlette", marker = "sys_platform != 'emscripten'" },
+    { name = "pyzmq", marker = "sys_platform != 'emscripten' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
+    { name = "starlette", marker = "sys_platform != 'emscripten' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
     { name = "tomlkit" },
-    { name = "typing-extensions", marker = "python_full_version < '3.12'" },
-    { name = "uvicorn", marker = "sys_platform != 'emscripten'" },
-    { name = "websockets", version = "16.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' and sys_platform != 'emscripten'" },
-    { name = "websockets", version = "17.0.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' and sys_platform != 'emscripten'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.12' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
+    { name = "uvicorn", marker = "sys_platform != 'emscripten' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
+    { name = "websockets", version = "16.1.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.11' and sys_platform != 'emscripten') or (python_full_version >= '3.11' and extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin') or (sys_platform == 'emscripten' and extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
+    { name = "websockets", version = "17.0.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version < '3.11' and extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin') or (sys_platform == 'emscripten' and extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/83/c0/b6b7101dc9d3760c51d67714d4547047cb2c29c11f26691bed6a64d8a995/marimo-0.23.16.tar.gz", hash = "sha256:378c892f0e1bc3985bc0b5b61109078e09fc767438b95234bfec9faa45858c98", size = 38789959, upload-time = "2026-07-31T20:04:47.92Z" }
 wheels = [
@@ -1266,7 +1365,7 @@ name = "pyzmq"
 version = "27.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cffi", marker = "implementation_name == 'pypy'" },
+    { name = "cffi", marker = "implementation_name == 'pypy' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/04/0b/3c9baedbdf613ecaa7aa07027780b8867f57b6293b6ee50de316c9f3222b/pyzmq-27.1.0.tar.gz", hash = "sha256:ac0765e3d44455adb6ddbf4417dcce460fc40a05978c08efdf2948072f6db540", size = 281750, upload-time = "2025-09-08T23:10:18.157Z" }
 wheels = [
@@ -1417,9 +1516,9 @@ dependencies = [
     { name = "cymem" },
     { name = "jinja2" },
     { name = "murmurhash" },
-    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
+    { name = "numpy", version = "2.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
     { name = "packaging" },
     { name = "preshed" },
     { name = "pydantic" },
@@ -1534,7 +1633,7 @@ version = "1.4.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/0f/3c/76d2fd1f1357ed0f0108d8a5aa233dcf16e2946a8559c84912fe08e01ac7/starlette-1.4.1.tar.gz", hash = "sha256:b7332de6e9375593a29ba9eee1e6ecfeb3eb2043e2e19a13b4b71da73ff35540", size = 2709041, upload-time = "2026-08-05T15:17:26.23Z" }
 wheels = [
@@ -1551,9 +1650,9 @@ dependencies = [
     { name = "confection" },
     { name = "cymem" },
     { name = "murmurhash" },
-    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
+    { name = "numpy", version = "2.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
     { name = "packaging" },
     { name = "preshed" },
     { name = "pydantic" },
@@ -1610,7 +1709,7 @@ name = "tqdm"
 version = "4.70.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/21/3b/6c24bec5be5e743ffd99576daa5cc077722fc7d5bbc00bd133fa0c698dc6/tqdm-4.70.0.tar.gz", hash = "sha256:55b0b0dbd97462d06ebee91e4dac24ed4d4702be82b24f07e6c1d27e08cea220", size = 795438, upload-time = "2026-07-27T11:33:15.271Z" }
 wheels = [
@@ -1623,7 +1722,7 @@ version = "0.27.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "annotated-doc" },
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
     { name = "rich" },
     { name = "shellingham" },
 ]
@@ -1669,7 +1768,7 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
     { name = "h11" },
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/03/18/ccce41535dee1be77735592bd19965f3972c82e07ee703d324709496b716/uvicorn-0.52.1.tar.gz", hash = "sha256:112ec661814189acbccd3f7b86460147cc065fc92c0821afa78918780e4354dd", size = 100571, upload-time = "2026-08-01T18:19:30.732Z" }
 wheels = [
@@ -1681,7 +1780,7 @@ name = "wasabi"
 version = "1.1.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-14-latincy-marimo-greek' and extra == 'extra-14-latincy-marimo-latin')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/ac/f9/054e6e2f1071e963b5e746b48d1e3727470b2a490834d18ad92364929db3/wasabi-1.1.3.tar.gz", hash = "sha256:4bb3008f003809db0c3e28b4daf20906ea871a2bb43f9914197d540f4f2e0878", size = 30391, upload-time = "2024-05-31T16:56:18.99Z" }
 wheels = [

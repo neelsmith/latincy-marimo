@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "latincy-marimo"
-version = "1.0.0"
+version = "0.1.0"
 description = "Marimo notebooks illustrating token and lexeme analysis with latincy text model."
 readme = "README.md"
 requires-python = ">=3.10, <3.14"
@@ -17,14 +17,33 @@ classifiers = [
 dependencies = [
     "marimo>=0.20.4",
     "spacy>=3.7",
+]
+
+[project.optional-dependencies]
+# Latin and Greek models require incompatible versions of latincy-preprocess,
+# so they live in separate extras that cannot be installed together:
+#   uv sync --extra latin    (or)    uv sync --extra greek
+latin = [
     "la-core-web-sm @ https://huggingface.co/latincy/la_core_web_sm/resolve/main/la_core_web_sm-3.9.6-py3-none-any.whl",
     "la-core-web-md @ https://huggingface.co/latincy/la_core_web_md/resolve/main/la_core_web_md-3.9.6-py3-none-any.whl",
     "la-core-web-lg @ https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-3.9.6-py3-none-any.whl",
 ]
-
-[project.optional-dependencies]
+greek = [
+    "grc-dep-web-sm @ https://huggingface.co/latincy/grc_dep_web_sm/resolve/main/grc_dep_web_sm-3.8.2-py3-none-any.whl",
+    "grc-dep-web-md @ https://huggingface.co/latincy/grc_dep_web_md/resolve/main/grc_dep_web_md-3.8.4-py3-none-any.whl",
+    "grc-dep-web-lg @ https://huggingface.co/latincy/grc_dep_web_lg/resolve/main/grc_dep_web_lg-3.8.1-py3-none-any.whl",
+]
 dev = [
     "ruff>=0.5",
 ]
 
-
+[tool.uv]
+# This repo holds notebooks, not an installable package, so skip building it
+# (setuptools cannot auto-discover a single package in this layout).
+package = false
+conflicts = [
+    [
+        { extra = "latin" },
+        { extra = "greek" },
+    ],
+]
